@@ -39,11 +39,11 @@
                             <td>{{ $comic->type }}</td>
 
 
-                            {{-- <td>
-                                <a href="{{ route('comic.show', $comic->id) }}" class="btn btn-success">
+                            <td>
+                                <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-success">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
