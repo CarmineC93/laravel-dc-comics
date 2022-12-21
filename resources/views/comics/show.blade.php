@@ -5,7 +5,7 @@
 @section('content')
     <section>
         <div class="container">
-            <h2>Pasta {{ $comic->id }}</h2>
+            <h2>Comic {{ $comic->id }}</h2>
             <div class="mt-4">
                 @if (!empty($comic->thumb))
                     <img class="w-25" src="{{ $comic->thumb }}" alt="">
