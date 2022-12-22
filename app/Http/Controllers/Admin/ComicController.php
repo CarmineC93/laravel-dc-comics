@@ -39,15 +39,15 @@ class ComicController extends Controller
     {
         $data = $request->all();
         $comic = new Comic();
-        $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
+        $comic->fill($data);
+        // $comic->title = $data['title'];
+        // $comic->description = $data['description'];
+        // $comic->thumb = $data['thumb'];
+        // $comic->price = $data['price'];
+        // $comic->series = $data['series'];
+        // $comic->sale_date = $data['sale_date'];
+        // $comic->type = $data['type'];
         $comic->save();
-
 
         return redirect()->route('comics.show', $comic->id);
     }
@@ -88,8 +88,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(Request $request, $id)
     {
+        $comic = Comic::findOrFail($id);
         $editData = $request->all(); //prelevo tutti i dati che sono stati inseriti nel form di edit.blade.php
         $comic->update($editData); //aggiorno i dati nel database
         return redirect()->route('comics.show', $comic->id); //reindirizzo una volta aggiornati i dati nella pagina show dell'elemento modificato
