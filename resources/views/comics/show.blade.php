@@ -5,7 +5,14 @@
 @section('content')
     <section>
         <div class="container">
-            <h2>Comic {{ $comic->id }}</h2>
+            <div class="d-flex justify-content-around">
+                <h2>Comic {{ $comic->title }}</h2>
+
+                <button class="btn btn-danger">
+                    <a href="{{ route('comics.index') }}">Torna Indietro</a>
+                </button>
+            </div>
+
             <div class="mt-4">
                 @if (!empty($comic->thumb))
                     <img class="w-25" src="{{ $comic->thumb }}" alt="">
@@ -17,7 +24,7 @@
                 <dt>Title</dt>
                 <dd>{{ $comic->title }}</dd>
                 <dt>Date Sale</dt>
-                <dd>{{ $comic->date_sale }}</dd>
+                <dd>{{ $comic->sale_date }}</dd>
                 <dt>Series</dt>
                 <dd>{{ $comic->series }}</dd>
                 <dt>Price</dt>
@@ -26,5 +33,6 @@
             {{-- {!! !!} per evitare escape di tag html. Da usare con cautela --}}
             <p>{!! $comic->description !!}</p>
         </div>
+
     </section>
 @endsection
