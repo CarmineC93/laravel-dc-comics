@@ -24,6 +24,8 @@
                         <th scope="col">Series</th>
                         <th scope="col">Sale Data</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Actions</th>
+
 
                     </tr>
                 </thead>
@@ -42,6 +44,12 @@
                             <td>
                                 <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-success">
                                     <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </td>
+
+                            <td>
+                                <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">
+                                    <i class="fa-solid fa-pencil"></i>
                                 </a>
                             </td>
                         </tr>
