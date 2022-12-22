@@ -19,7 +19,7 @@
 
                         <div class="mb-2">
                             <label for="description">Descrizione</label>
-                            <textarea class="form-control" id="description" name="description" rows="10">
+                            <textarea class="form-control" id="description" name="description" rows="5">
                                 {{ $comic->description }}
                             </textarea>
                         </div>

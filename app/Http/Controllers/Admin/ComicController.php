@@ -73,6 +73,8 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     //public function edit($id) or
     public function edit(Comic $comic)
     {
@@ -86,9 +88,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $editData = $request->all(); //prelevo tutti i dati che sono stati inseriti nel form di edit.blade.php
+        $comic->update($editData); //aggiorno i dati nel database
+        return redirect()->route('comics.show', $comic->id); //reindirizzo una volta aggiornati i dati nella pagina show dell'elemento modificato
     }
 
     /**
