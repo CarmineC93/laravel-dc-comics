@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want delete this element? <span id="modal-comic-title"></span></p>
+                <p>Are you sure you want delete the element "<span id="modal-comic-title"></span>" ?</p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
