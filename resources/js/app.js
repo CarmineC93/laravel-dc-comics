@@ -8,13 +8,14 @@ import.meta.glob([
 //prendiamo tutti i bottoni con la classe delete-btn
 const deleteBtns = document.querySelectorAll(".delete-btn");
 
-//per ognuno di questi bottoni assegnamo un evento click
+//per ognuno di questi bottoni assegniamo un evento click
 deleteBtns.forEach((btn)=>{
     btn.addEventListener("click", (event) => {
         //prima di tutto impediamo l'attivarsi del form al click sul falso bottone delete(che invece dovrà aprire la finestra con il vero delete)
         event.preventDefault();
         //poi personalizziamo la finestra di conferma (in due passaggi, questo è il primo) con il titolo dell'elemento da cancellare (che apparirà nello span nel file delete-modal)
         const comicTitle = btn.getAttribute('data-comic-title');
+        //con il click quindi creo il Modal di bootsrap che abbiamo inserito nella pagina delete-modal che avrà al suo interno il vero DELETE
         const modal = new bootstrap.Modal(
             document.getElementById("deleteModal")
         );
