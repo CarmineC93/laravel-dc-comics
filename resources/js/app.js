@@ -5,8 +5,10 @@ import.meta.glob([
     '../img/**'
 ]);
 
+//prendiamo tutti i bottoni con la classe delete-btn
 const deleteBtns = document.querySelectorAll(".delete-btn");
 
+//per ognuno di questi bottoni assegnamo un evento click
 deleteBtns.forEach((btn)=>{
     btn.addEventListener("click", (event) => {
         //prima di tutto impediamo l'attivarsi del form al click sul falso bottone delete(che invece dovrà aprire la finestra con il vero delete)
