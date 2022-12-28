@@ -155,7 +155,7 @@ class ComicController extends Controller
                 'title.max' => 'Il titolo deve essere di al massimo :max caratteri',
                 'description.required' => 'La descrizione è necessaria',
                 'thumb.required' => 'E\' necessario inserire un percorso ad un immagine',
-                'price.required' => 'E\' necessario inserire un valore numerico per il prezzo',
+                'price.required' => 'E\' necessario inserire un prezzo',
                 'series.required' => 'E\' necessario inserire la serie',
                 'sale_date.required' => 'La data è necessario inserirla in questo formato YY/MM/DD',
                 'type.required' => 'E\' necessario inserire il tipo di comic'
