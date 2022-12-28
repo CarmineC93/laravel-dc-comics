@@ -24,46 +24,84 @@
                         @csrf
                         <div class="mb-2">
                             <label for="title">Titolo</label>
-                            <input type="text" class="form-control" id="title" name="title"
-                                value="{{ $comic->title }}">
+                            {{-- nel secondo parametro di old() in value, passiamo il valore originale, se il nuovo valore non è
+                            conforme viene preso il preesistente valore --}}
+                            <input type="text" class="form-control  @error('title') is-invalid @enderror"
+                                value="{{ old('title', $comic->title) }}" id="title" name="title">
+                            @error('title')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
                             <label for="description">Descrizione</label>
-                            <textarea class="form-control" id="description" name="description" rows="5">
-                                {{ $comic->description }}
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"
+                                rows="5">
+                                {{ old('description', $comic->description) }}
                             </textarea>
+                            @error('description')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
                             <label for="thumb">Immagine</label>
-                            <input type="text" class="form-control" id="thumb" name="thumb"
-                                value="{{ $comic->thumb }}">
+                            <input type="text" class="form-control  @error('thumb') is-invalid @enderror"
+                                value="{{ old('thumb', $comic->thumb) }}" id="thumb" name="thumb">
+                            @error('thumb')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
                             <label for="price">Prezzo</label>
-                            <input type="text" class="form-control" id="price" name="price"
-                                value="{{ $comic->price }}">
+                            <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                value="{{ old('price', $comic->price) }}" id="price" name="price">
+                            @error('price')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
                             <label for="series">Serie</label>
-                            <input type="text" class="form-control" id="series" name="series"
-                                value="{{ $comic->series }}">
+                            <input type="text" class="form-control @error('series') is-invalid @enderror"
+                                value="{{ old('series', $comic->series) }}" id="series" name="series">
+                            @error('series')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
 
                         <div class="mb-2">
                             <label for="sale_date">Data di uscita</label>
-                            <input type="text" class="form-control" id="sale_date" name="sale_date"
-                                value="{{ $comic->sale_date }}">
+                            <input type="text" class="form-control @error('sale_date') is-invalid @enderror"
+                                value="{{ old('sale_date', $comic->sale_date) }}" id="sale_date" name="sale_date">
+                            @error('sale_date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-2">
                             <label for="type">Tipo</label>
-                            <input type="text" class="form-control" id="type" name="type"
-                                value="{{ $comic->type }}">
+                            <input type="text" class="form-control @error('type') is-invalid @enderror"
+                                value="{{ old('type', $comic->type) }}" id="type" name="type">
+                            @error('type')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
 
