@@ -101,6 +101,18 @@ class ComicController extends Controller
     public function update(Request $request, $id)
     {
         $comic = Comic::findOrFail($id);
+
+        //validiamo i dati inseriti nel form
+        $request->validate([
+            'title' => 'required|min:5|max:100',
+            'description' => 'required',
+            'thumb' => 'required',
+            'price' => 'required',
+            'series' => 'required',
+            'sale_date' => 'required',
+            'type' => 'required'
+        ]);
+
         $editData = $request->all(); //prelevo tutti i dati che sono stati inseriti nel form di edit.blade.php
         $comic->update($editData); //aggiorno i dati nel database
         return redirect()->route('comics.show', $comic->id); //reindirizzo una volta aggiornati i dati nella pagina show dell'elemento modificato

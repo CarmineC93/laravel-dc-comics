@@ -7,6 +7,17 @@
         <div class="container">
             <h2 class="text-center">Modifica Comic: {{ $comic->title }}</h2>
             <div class="row justify-content-center">
+                {{-- in caso di non corrispondenza con la validazione, mostrare errore --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="col-7 mb-5">
                     <form action="{{ route('comics.update', $comic->id) }}" method="POST">
                         @method('PUT')
