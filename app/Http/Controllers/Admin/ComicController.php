@@ -44,7 +44,7 @@ class ComicController extends Controller
             'thumb' => 'required',
             'price' => 'required',
             'series' => 'required',
-            'sale_data' => 'required',
+            'sale_date' => 'required',
             'type' => 'required'
         ]);
         $data = $request->all();
