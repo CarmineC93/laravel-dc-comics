@@ -39,16 +39,18 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         //validiamo i dati inseriti nel form
-        $request->validate([
-            'title' => 'required|min:5|max:100',
-            'description' => 'required',
-            'thumb' => 'required',
-            'price' => 'required',
-            'series' => 'required',
-            'sale_date' => 'required',
-            'type' => 'required'
-        ]);
-        $data = $request->all();
+        // $request->validate([
+        //     'title' => 'required|min:5|max:100',
+        //     'description' => 'required',
+        //     'thumb' => 'required',
+        //     'price' => 'required',
+        //     'series' => 'required',
+        //     'sale_date' => 'required',
+        //     'type' => 'required'
+        // ]);
+
+        // anzichè validare sia in create che in update, richiamo funzione che passa oltre alla validazione anche un messaggio 
+        $data = $this->validation($request->all());
         $comic = new Comic();
         $comic->fill($data);
         // $comic->title = $data['title'];
@@ -104,17 +106,18 @@ class ComicController extends Controller
         $comic = Comic::findOrFail($id);
 
         //validiamo i dati inseriti nel form
-        $request->validate([
-            'title' => 'required|min:5|max:100',
-            'description' => 'required',
-            'thumb' => 'required',
-            'price' => 'required',
-            'series' => 'required',
-            'sale_date' => 'required',
-            'type' => 'required'
-        ]);
+        // $request->validate([
+        //     'title' => 'required|min:5|max:100',
+        //     'description' => 'required',
+        //     'thumb' => 'required',
+        //     'price' => 'required',
+        //     'series' => 'required',
+        //     'sale_date' => 'required',
+        //     'type' => 'required'
+        // ]);
 
-        $editData = $request->all(); //prelevo tutti i dati che sono stati inseriti nel form di edit.blade.php
+        //richiamo funzione validation
+        $editData = $this->validation($request->all()); //prelevo tutti i dati che sono stati inseriti nel form di edit.blade.php
         $comic->update($editData); //aggiorno i dati nel database
         return redirect()->route('comics.show', $comic->id); //reindirizzo una volta aggiornati i dati nella pagina show dell'elemento modificato
     }
