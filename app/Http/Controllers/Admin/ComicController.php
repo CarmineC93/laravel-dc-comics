@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -128,5 +129,35 @@ class ComicController extends Controller
     {
         $comic->delete();
         return redirect()->route('comics.index'); //reindirizzo poi alla pagina index
+    }
+
+    //qui una funzione che ci permatta di non riscrivere stesso codice e nel quale possiamo inserire array con messaggi di errore per ogni validazione non rispettata
+    private function validation($data)
+    {
+        // la class Validator da usare estende Facade
+        $validationResult  = Validator::make(
+            $data,
+            [
+                'title' => 'required|min:5|max:100',
+                'description' => 'required',
+                'thumb' => 'required',
+                'price' => 'required',
+                'series' => 'required',
+                'sale_date' => 'required',
+                'type' => 'required'
+            ],
+            [
+                'title.required' => 'E\' necessario inserire un titolo',
+                'title.min' => 'Il titolo deve essere di almeno :min caratteri',
+                'title.max' => 'Il titolo deve essere di al massimo :max caratteri',
+                'description.required' => 'La descrizione è necessaria',
+                'thumb.required' => 'E\' necessario inserire un percorso ad un immagine',
+                'price.required' => 'E\' necessario inserire un valore numerico per il prezzo',
+                'series.required' => 'E\' necessario inserire la serie',
+                'sale_date.required' => 'La data è necessario inserirla in questo formato YY/MM/DD',
+                'type.required' => 'E\' necessario inserire il tipo di comic'
+            ]
+        )->validate();
+        return $validationResult;
     }
 }
